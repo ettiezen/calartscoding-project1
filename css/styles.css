@@ -1,0 +1,333 @@
+/* Variables */
+:root {
+	/* Colors — custom "Coastal" scheme */
+	--text: #22343B;         /* deep slate */
+	--accent1: #F4A259;      /* amber — active nav + card circles */
+	--accent1-dark: #DE7B2E; /* amber (dark) — section heading + hovers */
+	--accent2: #8ED2D6;      /* aqua — button + hero gradient (light) */
+	--accent2-dark: #3E8E9E; /* deep teal — hero gradient (dark) */
+	--bg: #F5F1E8;           /* warm cream — page background */
+	--bg-light: #FFFFFF;     /* white — cards */
+}
+
+
+/* Global */
+body {
+	font-family: "PT Sans", sans-serif;
+	color: var(--text);
+	background-color: var(--bg);
+}
+.button {
+	font-size: 1.125rem;
+	text-decoration: none;
+	border: var(--text) 1px solid;
+	border-radius: .5rem;
+	padding: .5rem 1.5rem;
+	background-color: var(--accent2);
+	font-weight: bold;
+	transition: 0.2s ease;
+}
+.button:hover {
+	background-color: var(--accent2-dark);
+	color: var(--bg-light);
+	border-color: var(--accent2-dark);
+}
+
+
+/* Header */
+.site-header {
+	position: relative;
+	margin-top: 1rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 3rem;
+}
+.site-logo {
+	font-size: 1.875rem;
+	font-family: "Changa One", cursive;
+}
+.site-nav {
+	margin-top: 2rem;
+}
+.site-nav__links {
+	display: none;   /* mobile: hidden until the hamburger is tapped */
+
+	li {
+		margin-bottom: .5rem;
+	}
+	a {
+		font-size: 1.125rem;
+		text-decoration: none;
+		display: block;
+		border: var(--text) 1px solid;
+		border-radius: .5rem;
+		padding: .5rem;
+		text-align: center;
+		transition: 0.2s ease;
+	}
+	a:hover {
+		background-color: var(--accent2);
+	}
+	.active {
+		background-color: var(--accent1);
+		font-weight: bold;
+	}
+	.active:hover {
+		background-color: var(--accent1-dark);
+	}
+}
+/* Descendant selector: when the JS adds .show-menu to <body>, reveal the links */
+.show-menu .site-nav__links {
+	display: block;
+}
+.site-nav__button {
+	position: absolute;
+	top: -.25rem;
+	right: 0;
+	border: var(--text) 1px solid;
+	border-radius: .5rem;
+	padding: .75rem;
+
+	svg {
+		display: block;
+	}
+}
+
+
+/* Hero */
+.hero {
+	background: linear-gradient(-45deg, var(--accent2) 0%, var(--accent2-dark) 100%);
+	padding: 1rem 1rem 0;
+	margin-bottom: 3rem;
+}
+.hero__header {
+	font-size: 3rem;
+	font-family: "Changa One", cursive;
+	margin-bottom: 2rem;
+	text-align: center;
+	line-height: 1;
+	letter-spacing: -0.09rem;
+
+	em {
+		font-style: normal;
+		color: var(--bg);
+	}
+}
+.hero__image {
+	display: block;
+	width: 100%;
+}
+
+
+/* Quote */
+.quote {
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 3rem;
+	text-align: center;
+}
+.quote__text {
+	font-size: 1.5rem;
+}
+.quote__attribution {
+	margin-top: .5rem;
+	font-size: 1.25rem;
+}
+
+
+/* Cards */
+.cards {
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 3rem;
+}
+.cards__header {
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: bold;
+	color: var(--accent1-dark);
+}
+.cards__wrapper {
+	display: grid;
+	gap: 2rem;
+}
+.card {
+	background-color: var(--bg-light);
+	border-radius: 0.5rem;
+	box-shadow: 4px 4px 16px 0px rgba(30, 37, 52, 0.10);
+	transition: 0.2s ease;
+}
+.card:hover {
+	transform: translateY(-4px);
+	box-shadow: 8px 12px 28px 0px rgba(30, 37, 52, 0.18);
+}
+.card__link {
+	padding: 1.5rem;
+	text-decoration: none;
+	text-align: center;
+	display: block;
+}
+.card__image {
+	background-color: var(--accent1);
+	width: 10rem;
+	height: 10rem;
+	padding: 1.5rem;
+	border-radius: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1.5rem;
+
+	img {
+		width: 100%;
+		mix-blend-mode: multiply;
+	}
+}
+.card__header {
+	font-size: 1.25rem;
+	margin-bottom: .5rem;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.card__text {
+	line-height: 1.35;
+}
+
+
+/* Mailing List */
+.mailing-list {
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 3rem;
+	text-align: center;
+}
+
+
+/* Footer */
+.site-footer {
+	background-color: var(--text);
+	color: var(--bg);
+
+	p {
+		padding: 3rem 1rem;
+	}
+}
+
+
+/* ============================================
+   DESKTOP  (800px and up)
+   ============================================ */
+@media screen and (min-width: 800px) {
+
+	/* Cap the whole layout at the 1280px design width and center it.
+	   The footer is left OUT of this group on purpose — its dark background
+	   should span the full window width (see below). */
+	.site-header,
+	.hero,
+	.quote,
+	.cards,
+	.mailing-list {
+		max-width: 80rem;      /* 80 × 16px = 1280px */
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* --- Header: logo left, nav right, on one row --- */
+	.site-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 3rem;
+		margin-bottom: 6rem;
+		padding-left: 4rem;
+		padding-right: 4rem;
+	}
+	.site-nav {
+		margin-top: 0;
+	}
+	.site-nav__button {
+		display: none;         /* no hamburger on desktop */
+	}
+	.site-nav__links {
+		display: flex;         /* links become a horizontal bar */
+	}
+	.show-menu .site-nav__links {
+		display: flex;         /* stay a row even if the menu was left open */
+	}
+	.site-nav__links li {
+		margin-bottom: 0;
+	}
+	/* Collapse the separate pills into one connected segmented bar */
+	.site-nav__links a {
+		border-radius: 0;
+		margin-left: -1px;     /* overlap the touching 1px borders */
+	}
+	.site-nav__links li:first-child a {
+		margin-left: 0;
+		border-top-left-radius: .5rem;
+		border-bottom-left-radius: .5rem;
+	}
+	.site-nav__links li:last-child a {
+		border-top-right-radius: .5rem;
+		border-bottom-right-radius: .5rem;
+	}
+
+	/* --- Hero: image left, text right --- */
+	.hero {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+		padding: 2.5rem 4rem 0;
+		margin-bottom: 6rem;
+	}
+	.hero__image {
+		order: -1;             /* move the image ahead of the heading */
+		width: 40%;
+		flex-shrink: 0;
+	}
+	.hero__header {
+		flex: 1;
+		font-size: 4.5rem;
+		text-align: left;
+		margin-bottom: 0;
+	}
+
+	/* --- Quote --- */
+	.quote {
+		padding-left: 4rem;
+		padding-right: 4rem;
+		margin-bottom: 6rem;
+	}
+
+	/* --- Cards: three columns --- */
+	.cards {
+		padding-left: 4rem;
+		padding-right: 4rem;
+		margin-bottom: 6rem;
+	}
+	.cards__header {
+		margin-bottom: 4rem;
+	}
+	.cards__wrapper {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 3rem;
+	}
+
+	/* --- Mailing list --- */
+	.mailing-list {
+		padding-left: 4rem;
+		padding-right: 4rem;
+		margin-bottom: 6rem;
+	}
+
+	/* --- Footer: dark bar fills the full window width, but the text inside
+	   is capped at 1280px and centered so the copyright stays lined up
+	   with the content column above it --- */
+	.site-footer p {
+		max-width: 80rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 3rem 4rem;
+	}
+}
